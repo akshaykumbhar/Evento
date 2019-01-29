@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="89sp"
         android:orientation="vertical"
-        android:layout_weight="0.35"
+        android:layout_weight="0.45"
         android:weightSum="1">
         <ImageView
             android:id="@+id/ivProfile_signup"
@@ -32,7 +32,7 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/button_1"
+                android:id="@+id/tvgallery_Signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GALLERY"
@@ -42,7 +42,7 @@
                 android:gravity="center"
                 android:layout_weight="0.50" />
             <TextView
-                android:id="@+id/button_2"
+                android:id="@+id/tvtakephoto_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TAKE PHOTO"
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="0.7"
+        android:layout_weight="0.6"
         android:weightSum="1"
         >
 
@@ -75,19 +75,7 @@
             android:textColorHint="@color/white"
             android:textColorHighlight="@color/white" />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8sp"
-            android:padding="12sp"
-            android:background="@drawable/shapeemail"
-            android:drawablePadding="10sp"
-            android:hint="Username"
-            android:inputType="text"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textColorHighlight="@color/white" />
+
 
         <EditText
             android:id="@+id/etEmail_signup"
@@ -119,12 +107,11 @@
 
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spCollege_Signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8sp"
             android:padding="12sp"
-            android:background="@drawable/shapeemail"
             android:drawablePadding="10sp"/>
 
         <EditText
@@ -142,7 +129,7 @@
             android:textColorHighlight="@color/white" />
 
         <Button
-            android:id="@+id/button_3"
+            android:id="@+id/btnSignup_Signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Signup"

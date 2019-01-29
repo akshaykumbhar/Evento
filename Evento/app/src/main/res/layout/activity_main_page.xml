@@ -15,4 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signin" />
+
+    <Button
+        android:id="@+id/btnLogout_MainPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout" />
 </LinearLayout>

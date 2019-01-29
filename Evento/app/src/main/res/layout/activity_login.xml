@@ -79,7 +79,7 @@
         android:background="@drawable/shapelogin"/>
 
     <Button
-        android:id="@+id/button_2"
+        android:id="@+id/btnsignup_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
