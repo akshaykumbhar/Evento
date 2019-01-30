@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,11 +24,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -38,46 +34,37 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
 
-public class Signup extends AppCompatActivity {
+public class ISignup extends AppCompatActivity {
+
     Button btnsignup;
     TextView tvgallery,tvtakephoto;
-    EditText etName,etEmail,etPassword,etPhone;
-    Spinner spCollege;
+    EditText etName,etEmail,etPassword,etPhone,etAddress;
     ImageView ivprofile;
     Uri filepath;
     ProgressDialog prog;
     StorageReference mStorageRef;
     DatabaseReference dbf;
     FirebaseAuth Auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_isignup);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        btnsignup = (Button) findViewById(R.id.btnSignup_Signup);
-        tvgallery = (TextView)findViewById(R.id.tvgallery_Signup);
-        tvtakephoto = (TextView) findViewById(R.id.tvtakephoto_signup);
-        etName  = (EditText) findViewById(R.id.etName_signup);
-        etEmail = (EditText) findViewById(R.id.etEmail_signup);
-        etPassword = (EditText) findViewById(R.id.etPassword_signup);
-        etPhone = (EditText) findViewById(R.id.etPhone_signup);
-        spCollege = (Spinner) findViewById(R.id.spCollege_Signup);
-        ivprofile = (ImageView) findViewById(R.id.ivProfile_signup);
+        btnsignup = (Button) findViewById(R.id.btnSignup_ISignup);
+        tvgallery = (TextView)findViewById(R.id.tvgallery_ISignup);
+        tvtakephoto = (TextView) findViewById(R.id.tvtakephoto_Isignup);
+        etName  = (EditText) findViewById(R.id.etName_Isignup);
+        etEmail = (EditText) findViewById(R.id.etEmail_Isignup);
+        etPassword = (EditText) findViewById(R.id.etPassword_Isignup);
+        etPhone = (EditText) findViewById(R.id.etPhone_Isignup);
+        ivprofile = (ImageView) findViewById(R.id.ivProfile_Isignup);
+        etAddress = (EditText) findViewById(R.id.etAddress_Isignup);
         prog = new ProgressDialog(this);
         Auth= FirebaseAuth.getInstance();
-        dbf = FirebaseDatabase.getInstance().getReference("Student");
+        dbf = FirebaseDatabase.getInstance().getReference("Institute");
         mStorageRef = FirebaseStorage.getInstance().getReference();
-
-        final ArrayList<String> CollegeName = new ArrayList<String>();
-        CollegeName.add(0,"Select College");
-        CollegeName.add("Shah & Anchor Kuthhi Engineering College");
-        CollegeName.add("Swami Vivekanad Engineering College");
-
-        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,CollegeName);
-        spCollege.setAdapter(adapter);
 
         tvgallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,52 +86,47 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String name = etName.getText().toString();
-                if(name.isEmpty())
-                {
+                if (name.isEmpty()) {
                     etName.setError("Enter Name");
                     etEmail.requestFocus();
                     return;
                 }
                 final String Email = etEmail.getText().toString();
-                if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches())
-                {
+                if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
                     etEmail.setError("Enter Valid Email");
                     etEmail.requestFocus();
                     return;
                 }
                 final String Password = etPassword.getText().toString();
-                if(Password.length() < 8)
-                {
+                if (Password.length() < 8) {
                     etPassword.setError("Enter Strong Password");
                     etPassword.requestFocus();
                     return;
                 }
-                String College = CollegeName.get(spCollege.getSelectedItemPosition());
-                if(College.equals("Select College"))
-                {
-                    Toast.makeText(Signup.this, "Please Select College", Toast.LENGTH_SHORT).show();
+                String Address = etAddress.getText().toString();
+                if (Address.isEmpty()) {
+                    etAddress.setError("Enter Address");
+                    etAddress.requestFocus();
                     return;
                 }
                 String Phone = etPhone.getText().toString();
-                if(Phone.length()<10)
-                {
+                if (Phone.length() < 10) {
                     etPhone.setError("Enter Valid Number");
                     etPhone.requestFocus();
                     return;
                 }
-                if(filepath == null)
-                {
-                    Toast.makeText(Signup.this, "Please Select Photo.", Toast.LENGTH_SHORT).show();
+                if (filepath == null) {
+                    Toast.makeText(ISignup.this, "Please Select Photo.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 prog.setTitle("Sign-up");
                 prog.setMessage("Please wait");
                 prog.show();
-                int a = (int)(Math.random()*326548.111223123);
+                int a = (int) (Math.random() * 326548.111223123);
                 String userid = String.valueOf(a);
-                String prouri = "StudentProfile/"+userid+".jpg";
+                String prouri = "InstitueProfile/" + userid + ".jpg";
 
-                final Student user = new Student(name,Email,College,Phone,userid,prouri);
+                final Institute user = new Institute(name, Email, Address, Phone, userid, prouri);
                 final StorageReference sf = mStorageRef.child(user.getProuri());
                 sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -158,14 +140,14 @@ public class Signup extends AppCompatActivity {
                                     if(task.isSuccessful())
                                     {
                                         prog.cancel();
-                                        startActivity(new Intent(Signup.this,MainPage.class));
-                                        Toast.makeText(Signup.this, "Successfull", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(ISignup.this,MainPage.class));
+                                        Toast.makeText(ISignup.this, "Successfull", Toast.LENGTH_SHORT).show();
                                         finish();
                                     }
                                     else
                                     {
                                         prog.cancel();
-                                        Toast.makeText(Signup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ISignup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                 }
@@ -174,19 +156,15 @@ public class Signup extends AppCompatActivity {
                         else
                         {
                             prog.cancel();
-                            Toast.makeText(Signup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ISignup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
                 });
-
-
-
             }
         });
 
     }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 123 && resultCode== RESULT_OK)
@@ -223,5 +201,12 @@ public class Signup extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity( new Intent(ISignup.this,MainPage.class));
+        finish();
     }
 }

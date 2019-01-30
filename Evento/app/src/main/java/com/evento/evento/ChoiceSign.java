@@ -25,6 +25,13 @@ public class ChoiceSign extends AppCompatActivity {
                 finish();
             }
         });
+        btninstitute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChoiceSign.this,ISignup.class));
+                finish();
+            }
+        });
     }
 
     @Override
