@@ -24,8 +24,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -44,7 +47,7 @@ public class ISignup extends AppCompatActivity {
     Uri filepath;
     ProgressDialog prog;
     StorageReference mStorageRef;
-    DatabaseReference dbf;
+    DatabaseReference dbf,df,df1;
     FirebaseAuth Auth;
 
     @Override
@@ -103,13 +106,13 @@ public class ISignup extends AppCompatActivity {
                     etPassword.requestFocus();
                     return;
                 }
-                String Address = etAddress.getText().toString();
+                final String Address = etAddress.getText().toString();
                 if (Address.isEmpty()) {
                     etAddress.setError("Enter Address");
                     etAddress.requestFocus();
                     return;
                 }
-                String Phone = etPhone.getText().toString();
+               final String Phone = etPhone.getText().toString();
                 if (Phone.length() < 10) {
                     etPhone.setError("Enter Valid Number");
                     etPhone.requestFocus();
@@ -122,45 +125,91 @@ public class ISignup extends AppCompatActivity {
                 prog.setTitle("Sign-up");
                 prog.setMessage("Please wait");
                 prog.show();
-                int a = (int) (Math.random() * 326548.111223123);
-                String userid = String.valueOf(a);
-                String prouri = "InstitueProfile/" + userid + ".jpg";
-
-                final Institute user = new Institute(name, Email, Address, Phone, userid, prouri);
-                final StorageReference sf = mStorageRef.child(user.getProuri());
-                sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                df = FirebaseDatabase.getInstance().getReference("Student");
+                df.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful())
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for ( DataSnapshot ds : dataSnapshot.getChildren())
                         {
-                            dbf.child(user.getUserid()).setValue(user);
-                            Auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful())
+                            Student s = ds.getValue(Student.class);
+                            if(s.getEmail().equals(Email))
+                            {
+                                etEmail.setError("Already Exist");
+                                etEmail.requestFocus();
+                                prog.cancel();
+                                return;
+                            }
+                        }
+                        df1 = FirebaseDatabase.getInstance().getReference("Institute");
+                        df1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for ( DataSnapshot ds : dataSnapshot.getChildren())
+                                {
+                                    Institute s = ds.getValue(Institute.class);
+                                    if(s.getEmail().equals(Email))
                                     {
+                                        etEmail.setError("Already Exist");
+                                        etEmail.requestFocus();
                                         prog.cancel();
-                                        startActivity(new Intent(ISignup.this,MainPage.class));
-                                        Toast.makeText(ISignup.this, "Successfull", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }
-                                    else
-                                    {
-                                        prog.cancel();
-                                        Toast.makeText(ISignup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                 }
-                            });
-                        }
-                        else
-                        {
-                            prog.cancel();
-                            Toast.makeText(ISignup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+                                int a = (int) (Math.random() * 326548.111223123);
+                                String userid = String.valueOf(a);
+                                String prouri = "InstitueProfile/" + userid + ".jpg";
+
+                                final Institute user = new Institute(name, Email, Address, Phone, userid, prouri);
+                                final StorageReference sf = mStorageRef.child(user.getProuri());
+                                sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                        if(task.isSuccessful())
+                                        {
+                                            dbf.child(user.getUserid()).setValue(user);
+                                            Auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                        prog.cancel();
+                                                        startActivity(new Intent(ISignup.this,IMainPage.class));
+                                                        Toast.makeText(ISignup.this, "Successfull", Toast.LENGTH_SHORT).show();
+                                                        finish();
+                                                    }
+                                                    else
+                                                    {
+                                                        prog.cancel();
+                                                        Toast.makeText(ISignup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
+                                                        return;
+                                                    }
+                                                }
+                                            });
+                                        }
+                                        else
+                                        {
+                                            prog.cancel();
+                                            Toast.makeText(ISignup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
+
             }
         });
 

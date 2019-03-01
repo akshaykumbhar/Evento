@@ -20,7 +20,8 @@
         <activity android:name=".Login" />
         <activity android:name=".Signup" />
         <activity android:name=".ChoiceSign" />
-        <activity android:name=".ISignup"></activity>
+        <activity android:name=".ISignup" />
+        <activity android:name=".IMainPage"></activity>
     </application>
 
 </manifest>

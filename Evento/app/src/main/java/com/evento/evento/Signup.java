@@ -50,7 +50,7 @@ public class Signup extends AppCompatActivity {
     Uri filepath;
     ProgressDialog prog;
     StorageReference mStorageRef;
-    DatabaseReference dbf;
+    DatabaseReference dbf,df,df1;
     FirebaseAuth Auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,13 +119,13 @@ public class Signup extends AppCompatActivity {
                     etPassword.requestFocus();
                     return;
                 }
-                String College = CollegeName.get(spCollege.getSelectedItemPosition());
+               final String College = CollegeName.get(spCollege.getSelectedItemPosition());
                 if(College.equals("Select College"))
                 {
                     Toast.makeText(Signup.this, "Please Select College", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String Phone = etPhone.getText().toString();
+               final String Phone = etPhone.getText().toString();
                 if(Phone.length()<10)
                 {
                     etPhone.setError("Enter Valid Number");
@@ -140,45 +140,91 @@ public class Signup extends AppCompatActivity {
                 prog.setTitle("Sign-up");
                 prog.setMessage("Please wait");
                 prog.show();
-                int a = (int)(Math.random()*326548.111223123);
-                String userid = String.valueOf(a);
-                String prouri = "StudentProfile/"+userid+".jpg";
-
-                final Student user = new Student(name,Email,College,Phone,userid,prouri);
-                final StorageReference sf = mStorageRef.child(user.getProuri());
-                sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                df = FirebaseDatabase.getInstance().getReference("Student");
+                df.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful())
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for ( DataSnapshot ds : dataSnapshot.getChildren())
                         {
-                            dbf.child(user.getUserid()).setValue(user);
-                            Auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful())
+                            Student s = ds.getValue(Student.class);
+                            if(s.getEmail().equals(Email))
+                            {
+                                etEmail.setError("Already Exist");
+                                etEmail.requestFocus();
+                                prog.cancel();
+                                return;
+                            }
+                        }
+                        df1 = FirebaseDatabase.getInstance().getReference("Institute");
+                        df1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for ( DataSnapshot ds : dataSnapshot.getChildren())
+                                {
+                                    Institute s = ds.getValue(Institute.class);
+                                    if(s.getEmail().equals(Email))
                                     {
+                                        etEmail.setError("Already Exist");
+                                        etEmail.requestFocus();
                                         prog.cancel();
-                                        startActivity(new Intent(Signup.this,MainPage.class));
-                                        Toast.makeText(Signup.this, "Successfull", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }
-                                    else
-                                    {
-                                        prog.cancel();
-                                        Toast.makeText(Signup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                 }
-                            });
-                        }
-                        else
-                        {
-                            prog.cancel();
-                            Toast.makeText(Signup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+                                int a = (int)(Math.random()*326548.111223123);
+                                String userid = String.valueOf(a);
+                                String prouri = "StudentProfile/"+userid+".jpg";
+
+                                final Student user = new Student(name,Email,College,Phone,userid,prouri);
+                                final StorageReference sf = mStorageRef.child(user.getProuri());
+                                sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                        if(task.isSuccessful())
+                                        {
+                                            dbf.child(user.getUserid()).setValue(user);
+                                            Auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                        prog.cancel();
+                                                        startActivity(new Intent(Signup.this,MainPage.class));
+                                                        Toast.makeText(Signup.this, "Successfull", Toast.LENGTH_SHORT).show();
+                                                        finish();
+                                                    }
+                                                    else
+                                                    {
+                                                        prog.cancel();
+                                                        Toast.makeText(Signup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
+                                                        return;
+                                                    }
+                                                }
+                                            });
+                                        }
+                                        else
+                                        {
+                                            prog.cancel();
+                                            Toast.makeText(Signup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
+
 
 
 
