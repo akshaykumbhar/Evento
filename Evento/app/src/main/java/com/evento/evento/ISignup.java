@@ -49,6 +49,7 @@ public class ISignup extends AppCompatActivity {
     StorageReference mStorageRef;
     DatabaseReference dbf,df,df1;
     FirebaseAuth Auth;
+    Boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +95,7 @@ public class ISignup extends AppCompatActivity {
                     etEmail.requestFocus();
                     return;
                 }
-                final String Email = etEmail.getText().toString();
+                final String Email = etEmail.getText().toString().toLowerCase();
                 if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
                     etEmail.setError("Enter Valid Email");
                     etEmail.requestFocus();
@@ -132,9 +133,10 @@ public class ISignup extends AppCompatActivity {
                         for ( DataSnapshot ds : dataSnapshot.getChildren())
                         {
                             Student s = ds.getValue(Student.class);
-                            if(s.getEmail().equals(Email))
+                            if(s.getEmail().equals(Email) )
                             {
-                                etEmail.setError("Already Exist");
+                                if(flag){
+                                etEmail.setError("Already Exist");}
                                 etEmail.requestFocus();
                                 prog.cancel();
                                 return;
@@ -149,13 +151,15 @@ public class ISignup extends AppCompatActivity {
                                     Institute s = ds.getValue(Institute.class);
                                     if(s.getEmail().equals(Email))
                                     {
-                                        etEmail.setError("Already Exist");
+                                        if(flag){
+                                        etEmail.setError("Already Exist");}
                                         etEmail.requestFocus();
                                         prog.cancel();
                                         return;
                                     }
                                 }
                                 int a = (int) (Math.random() * 326548.111223123);
+                                flag = false;
                                 String userid = String.valueOf(a);
                                 String prouri = "InstitueProfile/" + userid + ".jpg";
 

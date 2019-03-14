@@ -12,8 +12,11 @@ public class Student {
     String prouri;
     String userid;
 
+    public Student() {
+        super();
+    }
 
-    public Student(String name, String email, String col, String phone, String userid,String prouri) {
+    public Student(String name, String email, String col, String phone, String userid, String prouri) {
         this.name = name;
         this.email = email;
         this.col = col;
@@ -36,7 +39,7 @@ public class Student {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public String getCol() {

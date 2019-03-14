@@ -69,7 +69,7 @@ public class EventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_event, container, false);
-        //cont= getContext();
+        cont= getContext();
         act = getActivity();
         res = getResources();
 

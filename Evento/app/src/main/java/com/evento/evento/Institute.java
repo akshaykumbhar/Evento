@@ -12,6 +12,9 @@ public class Institute {
     String prouri;
     String userid;
 
+    public Institute() {
+    }
+
     public Institute(String name, String email, String address, String phone, String userid, String prouri) {
         this.name = name;
         this.email = email;
@@ -34,7 +37,7 @@ public class Institute {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public String getAddress() {

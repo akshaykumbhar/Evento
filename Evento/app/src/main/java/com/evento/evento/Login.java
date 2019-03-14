@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            prog.cancel();
+
                            final FirebaseUser user  =  Auth.getCurrentUser();
                             DatabaseReference dbf = FirebaseDatabase.getInstance().getReference("Student");
                             dbf.addValueEventListener(new ValueEventListener() {
@@ -76,6 +76,7 @@ public class Login extends AppCompatActivity {
                                         Student s = ds.getValue(Student.class);
                                         if(s.getEmail().equals(user.getEmail()))
                                         {
+                                            prog.cancel();
                                             startActivity(new Intent(Login.this,MainPage.class));
                                             finish();
                                         }
@@ -96,6 +97,7 @@ public class Login extends AppCompatActivity {
                                         Institute s = ds.getValue(Institute.class);
                                         if(s.getEmail().equals(user.getEmail()))
                                         {
+                                            prog.cancel();
                                             startActivity(new Intent(Login.this,IMainPage.class));
                                             finish();
                                         }
