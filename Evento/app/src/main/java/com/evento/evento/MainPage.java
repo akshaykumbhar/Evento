@@ -2,6 +2,7 @@ package com.evento.evento;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,14 @@ public class MainPage extends AppCompatActivity {
         btnEvent = (ImageView) findViewById(R.id.btnEvent);
         btnProfile = (ImageView) findViewById(R.id.btnProfile);
         final FragmentManager fmr = getFragmentManager();
+        FragmentTransaction ft = fmr.beginTransaction();
+        if(f!=null) {
+            ft.remove(f);
+        }
+        f = new EventFragment();
+        ft.replace(R.id.frag,f);
+        ft.addToBackStack(null);
+        ft.commit();
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,8 +54,28 @@ public class MainPage extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(MainPage.this, "Already login", Toast.LENGTH_SHORT).show();
+                    FragmentTransaction ft = fmr.beginTransaction();
+                    if(f!=null) {
+                        ft.remove(f);
+                    }
+                    f = new StudentProfile();
+                    ft.replace(R.id.frag,f);
+                    ft.addToBackStack(null);
+                    ft.commit();
                 }
+            }
+        });
+        btnEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = fmr.beginTransaction();
+                if(f!=null) {
+                    ft.remove(f);
+                }
+                f = new EventFragment();
+                ft.replace(R.id.frag,f);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
 
