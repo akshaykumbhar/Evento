@@ -8,28 +8,26 @@ public class Events {
     String id;
     String name;
     String sub;
-    String contact;
-    String eventno;
     String imgurl;
     String email;
     int seat;
     int avail;
-    int startdate;
-    int enddate;
+    String startdate;
+    String enddate;
     String address;
     int price;
+    String category;
 
 
 
     public Events() {
     }
 
-    public Events(String id,String name, String sub, String contact, String eventno, String imgurl, String email, int seat, int avail, int startdate, int enddate, String address, int price) {
+    public Events(String id,String name, String sub, String imgurl, String email, int seat, int avail, String startdate, String enddate, String address, int price, String category) {
         this.id = id;
         this.name = name;
         this.sub = sub;
-        this.contact = contact;
-        this.eventno = eventno;
+
         this.imgurl = imgurl;
         this.email = email;
         this.seat = seat;
@@ -38,6 +36,7 @@ public class Events {
         this.enddate = enddate;
         this.address = address;
         this.price = price;
+        this.category = category;
     }
 
     public String getId() {
@@ -64,21 +63,6 @@ public class Events {
         this.sub = sub;
     }
 
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getEventno() {
-        return eventno;
-    }
-
-    public void setEventno(String eventno) {
-        this.eventno = eventno;
-    }
 
     public String getImgurl() {
         return imgurl;
@@ -112,19 +96,19 @@ public class Events {
         this.avail = avail;
     }
 
-    public int getStartdate() {
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(int startdate) {
+    public void setStartdate(String startdate) {
         this.startdate = startdate;
     }
 
-    public int getEnddate() {
+    public String getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(int enddate) {
+    public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 
@@ -142,6 +126,14 @@ public class Events {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
 

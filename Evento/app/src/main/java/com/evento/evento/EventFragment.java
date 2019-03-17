@@ -4,6 +4,7 @@ package com.evento.evento;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -38,6 +39,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.evento.evento.EventFragment.act;
+import static com.evento.evento.EventFragment.cont;
 
 
 /**
@@ -54,6 +56,7 @@ public class EventFragment extends Fragment {
     static ArrayList<String> Org;
     static ArrayList<String> Event ;
     static ArrayList<String> imag ;
+    static ArrayList<String> id;
     static Context cont;
     static Activity act;
     ListView lv;
@@ -82,11 +85,13 @@ public class EventFragment extends Fragment {
                 Org = new ArrayList<String>();
                 Event = new ArrayList<String>();
                 imag = new ArrayList<String>();
+                id = new ArrayList<String>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     e = ds.getValue(Events.class);
                     Org.add(e.getName());
                     Event.add(e.getSub());
                     imag.add(e.getImgurl());
+                    id.add(e.getId());
 
                 }
                 CustomEvent cs = new CustomEvent();
@@ -144,12 +149,14 @@ class CustomEvent extends BaseAdapter
                         EventFragment.user = EventFragment.Auth.getCurrentUser();
                         if(EventFragment.user == null)
                         {
-                            Toast.makeText(act, "Please Login", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EventFragment.cont, "Please Login", Toast.LENGTH_SHORT).show();
                         }
                         else{
 
 
-                        Toast.makeText(act, "Your Event "+ EventFragment.Org.get(i)+" is Booked", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(EventFragment.cont,SEventDetails.class);
+                            intent.putExtra("id",EventFragment.id.get(i));
+                            act.startActivity(intent);
                     }}
                 });
                 StorageReference ref = sf.child(EventFragment.imag.get(i));

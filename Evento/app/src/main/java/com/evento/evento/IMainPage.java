@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 public class IMainPage extends AppCompatActivity {
     Fragment f;
     FragmentManager fmr;
-    ImageButton ibprofile;
+    ImageButton ibprofile,ibevent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,13 @@ public class IMainPage extends AppCompatActivity {
         ibprofile = (ImageButton)findViewById(R.id.ib_i_profile);
          fmr = getFragmentManager();
         final FragmentTransaction ft = fmr.beginTransaction();
+        if(f!=null) {
+            ft.remove(f);
+        }
+        f = new InstituteEvent();
+        ft.replace(R.id.imp_frag,f);
+        ft.addToBackStack(null);
+        ft.commit();
         ibprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +42,21 @@ public class IMainPage extends AppCompatActivity {
                 ft.replace(R.id.imp_frag,f);
                 ft.addToBackStack(null);
                 ft.commit();
+            }
+        });
+        ibevent = (ImageButton) findViewById(R.id.ib_i_event);
+        ibevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = fmr.beginTransaction();
+                if(f!=null) {
+                    ft.remove(f);
+                }
+                f = new InstituteEvent();
+                ft.replace(R.id.imp_frag,f);
+                ft.addToBackStack(null);
+                ft.commit();
+
             }
         });
 
