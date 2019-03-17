@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth Auth;
     EditText etEmail,etPassword;
     ProgressDialog prog;
+    TextView tvforget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +122,21 @@ public class Login extends AppCompatActivity {
 
             }
         });
+        tvforget = (TextView) findViewById(R.id.tvForget);
+        tvforget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String em  = etEmail.getText().toString().toLowerCase();
+                if(em.isEmpty())
+                {
+                    etEmail.setError("Enter Email");
+                    etEmail.requestFocus();
+                    return;
+                }
+                Auth.sendPasswordResetEmail(em);
+            }
+        });
+        
     }
 
     @Override

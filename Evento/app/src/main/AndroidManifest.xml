@@ -21,7 +21,10 @@
         <activity android:name=".Signup" />
         <activity android:name=".ChoiceSign" />
         <activity android:name=".ISignup" />
-        <activity android:name=".IMainPage"></activity>
+        <activity android:name=".IMainPage" />
+        <activity android:name=".StudentWallet" />
+        <activity android:name=".IEditProfile" />
+        <activity android:name=".InstituteWallet"></activity>
     </application>
 
 </manifest>

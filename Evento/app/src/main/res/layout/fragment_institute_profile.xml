@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#6e9ec3"
     android:orientation="vertical"
-    tools:context="com.evento.evento.StudentProfile">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.evento.evento.InstituteProfile">
 
     <LinearLayout
         android:layout_weight="0.3"
@@ -20,26 +20,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/ptvname"
+                android:id="@+id/iptvname"
                 android:layout_height="wrap_content"
                 android:layout_width="200dp"
                 android:textSize="34sp"
                 android:textColor="#FFFFFF"
                 android:text="NAME"
                 />
-            <TextView
-                android:id="@+id/ptvcolname"
-                android:layout_below="@id/ptvname"
-                android:layout_marginTop="6dp"
-                android:layout_height="wrap_content"
-                android:layout_width="200dp"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"
-                android:text="COLLEGE NAME"
-                />
+
 
             <ImageView
-                android:id="@+id/ivProfilePic"
+                android:id="@+id/iivProfilePic"
                 android:layout_height="100dp"
                 android:layout_width="100dp"
                 android:layout_alignParentRight="true"
@@ -64,13 +55,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
-            <ImageButton
-                android:id="@+id/iv_imageButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:srcCompat="@drawable/person" />
+                <ImageButton
+                    android:id="@+id/iiv_imageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/person" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,19 +73,19 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:srcCompat="@drawable/logout" />
+                <ImageButton
+                    android:id="@+id/iimageButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/logout" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Edit Profile"
+                    android:text="About"
                     android:textAlignment="center"/>
-                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="50"
@@ -108,38 +99,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <ImageButton
-                android:id="@+id/iv_imageButton2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:srcCompat="@drawable/logout" />
+                <ImageButton
+                    android:id="@+id/iiv_imageButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/logout" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Wallet"
                     android:textAlignment="center"/>
-                </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_weight="50"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <ImageButton
-                android:id="@+id/iv_imageButton3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:srcCompat="@drawable/logout" />
+                <ImageButton
+                    android:id="@+id/iiv_imageButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/logout" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Logout"
                     android:textAlignment="center"/>
-                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

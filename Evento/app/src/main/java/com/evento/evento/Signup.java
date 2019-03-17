@@ -178,7 +178,7 @@ public class Signup extends AppCompatActivity {
                                 String userid = String.valueOf(a);
                                 String prouri = "StudentProfile/"+userid+".jpg";
 
-                                final Student user = new Student(name,Email,College,Phone,userid,prouri);
+                                final Student user = new Student(name,Email,College,Phone,userid,prouri,0);
                                 final StorageReference sf = mStorageRef.child(user.getProuri());
                                 sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                     @Override

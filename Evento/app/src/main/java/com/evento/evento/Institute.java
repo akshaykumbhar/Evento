@@ -11,17 +11,27 @@ public class Institute {
     String phone;
     String prouri;
     String userid;
+    int wallet;
 
     public Institute() {
     }
 
-    public Institute(String name, String email, String address, String phone, String userid, String prouri) {
+    public Institute(String name, String email, String address, String phone, String userid, String prouri,int wallet) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.phone = phone;
         this.prouri = prouri;
         this.userid = userid;
+        this.wallet = wallet;
+    }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
     }
 
     public String getName() {

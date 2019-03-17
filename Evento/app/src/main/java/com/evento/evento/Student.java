@@ -11,17 +11,18 @@ public class Student {
     String phone;
     String prouri;
     String userid;
+    int wallet;
 
     public Student() {
         super();
     }
 
-    public Student(String name, String email, String col, String phone, String userid, String prouri) {
+    public Student(String name, String email, String col, String phone, String userid, String prouri,int wallet) {
         this.name = name;
         this.email = email;
         this.col = col;
         this.phone = phone;
-
+        this.wallet = wallet;
         this.userid =  userid;
         this.prouri = prouri;
     }
@@ -72,5 +73,13 @@ public class Student {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
     }
 }

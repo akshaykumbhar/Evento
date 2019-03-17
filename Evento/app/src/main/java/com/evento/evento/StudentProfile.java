@@ -1,6 +1,7 @@
 package com.evento.evento;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +47,7 @@ public class StudentProfile extends Fragment {
     StorageReference sf;
     DatabaseReference dbf;
     Student s;
+    ImageButton iblogout,ibwallet,ibprofile;
     public StudentProfile() {
         // Required empty public constructor
     }
@@ -54,13 +57,36 @@ public class StudentProfile extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_student_profile, container, false);
+        final View view = inflater.inflate(R.layout.fragment_student_profile, container, false);
         tvname = (TextView) view.findViewById(R.id.ptvname);
         tvcolname = (TextView) view.findViewById(R.id.ptvcolname);
         profilepic = (ImageView) view.findViewById(R.id.ivProfilePic);
+        iblogout = (ImageButton) view.findViewById(R.id.iv_imageButton3);
+        ibwallet = (ImageButton) view.findViewById(R.id.iv_imageButton2);
+        ibprofile = (ImageButton) view.findViewById(R.id.iv_imageButton);
         Auth = FirebaseAuth.getInstance();
         user = Auth.getCurrentUser();
         sf = FirebaseStorage.getInstance().getReference();
+        ibprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),IEditProfile.class));
+            }
+        });
+        iblogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Auth.signOut();
+                startActivity(new Intent(getContext(),MainPage.class));
+                getActivity().finish();
+            }
+        });
+        ibwallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),StudentWallet.class));
+            }
+        });
         if (user != null)
         {
             dbf = FirebaseDatabase.getInstance().getReference("Student");
@@ -69,13 +95,9 @@ public class StudentProfile extends Fragment {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren())
                     {
-                        Toast.makeText(getContext(), "checking", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getContext(),user.getEmail(), Toast.LENGTH_SHORT).show();
                         s = ds.getValue(Student.class);
-                        Toast.makeText(getContext(),s.getEmail(), Toast.LENGTH_SHORT).show();
                         if(s.getEmail().equals(user.getEmail()))
                         {
-                            Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
                             tvname.setText(s.getName().toString());
                             tvcolname.setText(s.getCol().toString());
                             StorageReference ref = sf.child(s.getProuri().toString());
