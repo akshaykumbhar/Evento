@@ -24,7 +24,7 @@ public class MainPage extends AppCompatActivity {
     StorageReference sf;
     DatabaseReference dbf;
     Fragment f;
-    ImageView btnProfile,btnEvent;
+    ImageView btnProfile,btnEvent,btneventsl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainPage extends AppCompatActivity {
         user = Auth.getCurrentUser();
         btnEvent = (ImageView) findViewById(R.id.btnEvent);
         btnProfile = (ImageView) findViewById(R.id.btnProfile);
+        btneventsl = (ImageView) findViewById(R.id.btnevents);
         final FragmentManager fmr = getFragmentManager();
         FragmentTransaction ft = fmr.beginTransaction();
         if(f!=null) {
@@ -73,6 +74,19 @@ public class MainPage extends AppCompatActivity {
                     ft.remove(f);
                 }
                 f = new EventFragment();
+                ft.replace(R.id.frag,f);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+        btneventsl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = fmr.beginTransaction();
+                if(f!=null) {
+                    ft.remove(f);
+                }
+                f = new SeventList();
                 ft.replace(R.id.frag,f);
                 ft.addToBackStack(null);
                 ft.commit();

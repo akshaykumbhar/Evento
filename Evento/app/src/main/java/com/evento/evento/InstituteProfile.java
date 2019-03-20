@@ -49,6 +49,7 @@ public class InstituteProfile extends Fragment {
     ImageView iv_propic;
     ImageButton ibedit,ibwallet,iblogout,ibabout;
     Institute  i ;
+    Boolean flag = true;
 
     public InstituteProfile() {
         // Required empty public constructor
@@ -88,6 +89,11 @@ public class InstituteProfile extends Fragment {
                     i = ds.getValue(Institute.class);
                     if(i.getEmail().equals(user.getEmail()))
                     {
+                        if(!flag)
+                        {
+                            break;
+                        }
+                        flag = false;
                         tvname.setText(i.getName());
                         StorageReference ref = sf.child(i.getProuri().toString());
                         try {

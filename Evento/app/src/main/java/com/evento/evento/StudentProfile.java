@@ -46,6 +46,7 @@ public class StudentProfile extends Fragment {
     FirebaseAuth Auth;
     StorageReference sf;
     DatabaseReference dbf;
+    Boolean flag=true;
     Student s;
     ImageButton iblogout,ibwallet,ibprofile;
     public StudentProfile() {
@@ -95,9 +96,14 @@ public class StudentProfile extends Fragment {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren())
                     {
+                        if(!flag)
+                        {
+                            break;
+                        }
                         s = ds.getValue(Student.class);
                         if(s.getEmail().equals(user.getEmail()))
                         {
+                            flag=false;
                             tvname.setText(s.getName().toString());
                             tvcolname.setText(s.getCol().toString());
                             StorageReference ref = sf.child(s.getProuri().toString());

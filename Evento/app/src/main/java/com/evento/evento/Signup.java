@@ -142,7 +142,7 @@ public class Signup extends AppCompatActivity {
                 prog.setMessage("Please wait");
                 prog.show();
                 df = FirebaseDatabase.getInstance().getReference("Student");
-                df.addValueEventListener(new ValueEventListener() {
+                df.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for ( DataSnapshot ds : dataSnapshot.getChildren())
@@ -158,7 +158,7 @@ public class Signup extends AppCompatActivity {
                             }
                         }
                         df1 = FirebaseDatabase.getInstance().getReference("Institute");
-                        df1.addValueEventListener(new ValueEventListener() {
+                        df1.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for ( DataSnapshot ds : dataSnapshot.getChildren())

@@ -26,7 +26,8 @@
         <activity android:name=".IEditProfile" />
         <activity android:name=".InstituteWallet" />
         <activity android:name=".CreateEvent" />
-        <activity android:name=".SEventDetails"></activity>
+        <activity android:name=".SEventDetails" />
+        <activity android:name=".StudentEventList"></activity>
     </application>
 
 </manifest>
