@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.evento.evento.ISignup"
+    tools:context="com.evento.evento.InstitueProfileEdit"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20sp"
@@ -77,33 +77,6 @@
 
 
 
-        <EditText
-            android:id="@+id/etEmail_Isignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8sp"
-            android:padding="12sp"
-            android:background="@drawable/shapeemail"
-            android:drawablePadding="10sp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textColorHighlight="@color/white" />
-
-        <EditText
-            android:id="@+id/etPassword_Isignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8sp"
-            android:padding="12sp"
-            android:background="@drawable/shapeemail"
-            android:drawablePadding="10sp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textColorHighlight="@color/white" />
 
         <EditText
             android:id="@+id/etAddress_Isignup"
@@ -139,7 +112,7 @@
             android:id="@+id/btnSignup_ISignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Signup"
+            android:text="Save Changes"
             android:shadowColor="@android:color/transparent"
             android:padding="15sp"
             android:layout_marginRight="10sp"

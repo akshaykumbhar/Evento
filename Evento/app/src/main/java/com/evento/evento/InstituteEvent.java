@@ -8,9 +8,11 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +33,7 @@ public class InstituteEvent extends Fragment{
     FirebaseAuth Auth;
     FirebaseUser user ;
     DatabaseReference db;
-    ArrayList<String> Event;
+    ArrayList<String> Event,ids;
     Events e;
     ListView lv;
 
@@ -60,17 +62,20 @@ public class InstituteEvent extends Fragment{
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(Event != null)
+                if(Event != null && ids!=null)
                 {
                     Event = null;
+                    ids=null;
                 }
                 Event = new ArrayList<String>();
+                ids = new ArrayList<String>();
                 for (DataSnapshot ds : dataSnapshot.getChildren())
                 {
                     e = ds.getValue(Events.class);
                     if(e.getEmail().equals(user.getEmail()))
                     {
                         Event.add(e.getName());
+                        ids.add(e.getId());
                     }
                 }
                 ArrayAdapter adapter = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,Event);
@@ -81,6 +86,15 @@ public class InstituteEvent extends Fragment{
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+       lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getContext(),InstituteViewCreate.class);
+                i.putExtra("id",ids.get(position));
+                startActivity(i);
             }
         });
 

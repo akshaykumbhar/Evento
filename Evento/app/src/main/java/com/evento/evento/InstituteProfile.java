@@ -65,6 +65,19 @@ public class InstituteProfile extends Fragment {
         sf = FirebaseStorage.getInstance().getReference();
         iv_propic = (ImageView) view.findViewById(R.id.iivProfilePic);
         ibwallet=(ImageButton) view.findViewById(R.id.iiv_imageButton2);
+        ibedit = (ImageButton) view.findViewById(R.id.iiv_imageButton);
+        ibedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),InstitueProfileEdit.class);
+                intent.putExtra("name",i.getName());
+                intent.putExtra("address",i.getAddress());
+                intent.putExtra("id",i.getUserid());
+                intent.putExtra("filepath",i.getProuri());
+                intent.putExtra("phone",i.getPhone());
+                startActivity(intent);
+            }
+        });
         ibwallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
