@@ -1,21 +1,19 @@
 package com.evento.evento;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.test.suitebuilder.TestMethod;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,53 +26,43 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
-public class InstituteViewCreate extends AppCompatActivity {
-    TextView tvname,tvsub,tvseat,tvavail,tvsd,tved,tvprice,tvup,tvupdate;
+public class StudentEventView extends AppCompatActivity {
+    TextView tvname,tvsub,tvup,tvupdate,tvsd,tved;
     ImageView ivimg;
-    DatabaseReference db;
-    Events e ;
+    FirebaseAuth Auth;
+    FirebaseUser user ;
     StorageReference sf;
-    Button btnedit,btnupdate,btnshow;
-
-
+    DatabaseReference db,db1,db2,db3;
+    Events e;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_institute_view_create);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Intent i = getIntent();
-        final String eid = i.getStringExtra("id");
+        setContentView(R.layout.activity_student_event_view);
         tvname = (TextView) findViewById(R.id.tv_sed_name);
         tvsub = (TextView) findViewById(R.id.tv_sed_sub);
-        tvseat = (TextView) findViewById(R.id.tv_sed_seat);
-        tvavail = (TextView) findViewById(R.id.tv_sed_aseat);
         tvsd = (TextView) findViewById(R.id.tv_sed_sd);
         tved = (TextView) findViewById(R.id.tv_sed_ed);
-        tvprice = (TextView) findViewById(R.id.tv_sed_price);
         ivimg = (ImageView) findViewById(R.id.iv_sed_img);
-        tvup = (TextView) findViewById(R.id.tv_sed_up);
-        tvupdate = (TextView) findViewById(R.id.tv_sed_updates);
+        tvup = (TextView) findViewById(R.id.tv_updates);
+        tvupdate = (TextView) findViewById(R.id.tv_update);
         sf = FirebaseStorage.getInstance().getReference();
+        Intent i = getIntent();
+        final String id = i.getStringExtra("id");
         db = FirebaseDatabase.getInstance().getReference("Events");
-        db.addListenerForSingleValueEvent(new ValueEventListener() {
+        db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())
                 {
-                    e = ds.getValue(Events.class);
-                    if(e.getId().equals(eid))
+                    e = ds .getValue(Events.class);
+                    if(e.getId().equals(id))
                     {
                         tvname.setText(e.getName());
-                        tvsub.setText(e.getSub());
-                        tvseat.setText("Total Seats: "+String.valueOf(e.getSeat()));
-                        tvavail.setText("Available Seats: "+String.valueOf(e.getAvail()));
                         tvsd.setText("Start Date: "+e.getStartdate());
                         tved.setText("End Date: "+e.getEnddate());
-                        tvprice.setText("Price: RS. "+String.valueOf(e.getPrice()));
+                        tvsub.setText(e.getSub());
                         if(!e.getUpdate().equals(""))
                         {
-                            tvup.setVisibility(View.VISIBLE);
-                            tvupdate.setVisibility(View.VISIBLE);
                             tvup.setText("Updates");
                             tvupdate.setText(e.getUpdate());
                         }
@@ -100,6 +88,7 @@ public class InstituteViewCreate extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         break;
+
                     }
                 }
             }
@@ -109,39 +98,5 @@ public class InstituteViewCreate extends AppCompatActivity {
 
             }
         });
-        btnshow = (Button) findViewById(R.id.button6);
-        btnshow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent i = new Intent(InstituteViewCreate.this,StudentList.class);
-                i.putExtra("id",e.getId());
-                startActivity(i);
-            }
-        });
-        btnupdate =(Button)findViewById(R.id.button5);
-        btnupdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(InstituteViewCreate.this,EventUpdate.class);
-                i.putExtra("id",e.getId());
-                i.putExtra("update",e.getUpdate());
-                startActivity(i);
-            }
-        });
-        btnedit = (Button)findViewById(R.id.button4);
-        btnedit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(InstituteViewCreate.this,EventEdit.class);
-                i.putExtra("id",e.getId());
-                startActivity(i);
-            }
-        });
-    }
-
-    @Override
-    public void onBackPressed() {
-            super.onBackPressed();
-        finish();
     }
 }

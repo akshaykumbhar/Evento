@@ -68,7 +68,7 @@ public class InstitueProfileEdit extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()) {
-                        Uri filepath = Uri.fromFile(localFile);
+                         filepath = Uri.fromFile(localFile);
                         try {
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
                             RoundedBitmapDrawable rbd= RoundedBitmapDrawableFactory.create(getResources(),bitmap);

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20sp"
+    android:background="@drawable/background_color"
+    tools:context="com.evento.evento.EventEdit">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_ce_img"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/shedule" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_ce_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/shapelogin"
+                android:text="Gallery" />
+
+            <Button
+                android:id="@+id/btn_ce_tak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/shapelogin"
+                android:text="Take Photo" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_ce_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Name"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white" />
+
+        <EditText
+            android:id="@+id/et_ce_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Sub Title / Short Description"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white" />
+
+        <EditText
+            android:id="@+id/et_ce_seat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Seats"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/et_ce_sd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Start Date: DD/MM/YYYY"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/et_ce_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="End Date: DD/MM/YYYY"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/et_ce_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Address"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white"
+            />
+
+
+
+        <Button
+            android:id="@+id/btn_ce_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/shapelogin"
+            android:layout_weight="1"
+            android:text="Create" />
+    </LinearLayout>
+
+</ScrollView>

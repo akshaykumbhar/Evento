@@ -82,14 +82,21 @@ public class MainPage extends AppCompatActivity {
         btneventsl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction ft = fmr.beginTransaction();
-                if(f!=null) {
-                    ft.remove(f);
+                if(user == null)
+                {
+                    startActivity(new Intent(MainPage.this,Login.class));
+                    finish();
                 }
-                f = new SeventList();
-                ft.replace(R.id.frag,f);
-                ft.addToBackStack(null);
-                ft.commit();
+                else {
+                    FragmentTransaction ft = fmr.beginTransaction();
+                    if (f != null) {
+                        ft.remove(f);
+                    }
+                    f = new SeventList();
+                    ft.replace(R.id.frag, f);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
             }
         });
 

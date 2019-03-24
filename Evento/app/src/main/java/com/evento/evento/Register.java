@@ -10,17 +10,27 @@ public class Register {
     String eventid;
     String studentid;
     String ename;
+    String sname;
 
     public Register() {
 
     }
 
-    public Register(String regiserationdate, String regiserationid, String eventid, String studentid,String ename) {
+    public Register(String regiserationdate, String regiserationid, String eventid, String studentid,String ename, String sname) {
         this.regiserationdate = regiserationdate;
         this.regiserationid = regiserationid;
         this.eventid = eventid;
         this.studentid = studentid;
         this.ename = ename;
+        this.sname = sname;
+    }
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
     }
 
     public String getEname() {

@@ -4,20 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color"
     android:orientation="vertical"
-    tools:context="com.evento.evento.StudentEventList">
+    tools:context="com.evento.evento.StudentList">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_sl_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your Booked Events"
-        android:textSize="24dp"
-        android:textAlignment="center"/>
+        android:text="Student Count:" />
 
     <ListView
-        android:id="@+id/lv_sel"
+        android:id="@+id/lv_sl"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

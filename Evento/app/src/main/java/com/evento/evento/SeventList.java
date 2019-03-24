@@ -1,12 +1,14 @@
 package com.evento.evento;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -30,7 +32,7 @@ public class SeventList extends Fragment {
     FirebaseAuth Auth;
     FirebaseUser user ;
     DatabaseReference db,db1;
-    ArrayList<String> events;
+    static ArrayList<String> events,eid;
     Register reg;
     Events es;
 
@@ -53,12 +55,14 @@ public class SeventList extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 events = new ArrayList<String>();
+                eid = new ArrayList<String>();
                 for(DataSnapshot ds : dataSnapshot.getChildren())
                 {
                     reg = ds.getValue(Register.class);
                     if(reg.getStudentid().equals(user.getEmail()))
                     {
                         events.add(reg.getEname());
+                        eid.add(reg.getEventid());
                     }
 
                 }
@@ -66,13 +70,20 @@ public class SeventList extends Fragment {
                 lv.setAdapter(ad);
             }
 
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getContext(),StudentEventView.class);
+                i.putExtra("id",eid.get(position));
+                startActivity(i);
+            }
+        });
         return  view;
     }
 

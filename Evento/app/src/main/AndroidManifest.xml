@@ -27,12 +27,17 @@
         <activity android:name=".InstituteWallet" />
         <activity android:name=".CreateEvent" />
         <activity android:name=".SEventDetails" />
-        <activity android:name=".StudentEventList" />
         <activity android:name=".StudentProfileEdit" />
         <activity android:name=".InstitueProfileEdit" />
         <activity android:name=".StudentViewBook" />
         <activity android:name=".InstituteViewCreate" />
-        <activity android:name=".ViewStudentBooked"></activity>
+        <activity android:name=".ViewStudentBooked" />
+        <activity android:name=".Sort" />
+        <activity android:name=".Filter" />
+        <activity android:name=".StudentEventView" />
+        <activity android:name=".StudentList" />
+        <activity android:name=".EventUpdate" />
+        <activity android:name=".EventEdit"></activity>
     </application>
 
 </manifest>

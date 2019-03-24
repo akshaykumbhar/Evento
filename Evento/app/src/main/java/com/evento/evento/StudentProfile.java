@@ -71,7 +71,7 @@ public class StudentProfile extends Fragment {
         ibprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),IEditProfile.class));
+                startActivity(new Intent(getContext(),StudentProfileEdit.class));
             }
         });
         iblogout.setOnClickListener(new View.OnClickListener() {

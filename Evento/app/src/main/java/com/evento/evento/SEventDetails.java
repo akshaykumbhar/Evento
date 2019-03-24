@@ -155,7 +155,7 @@ public class SEventDetails extends AppCompatActivity {
                                             String strDate= formatter.format(date);
                                             String id[] = strDate.split("/");
                                             String id1 = id[2]+id[1]+id[0]+String.valueOf(((int)(Math.random()*100)+11));
-                                            reg = new Register(strDate,id1,e.getId(),user.getEmail(),e.getName()+" : "+e.getSub());
+                                            reg = new Register(strDate,id1,e.getId(),user.getEmail(),e.getName()+" : "+e.getSub(),s.getName());
                                             db.child(id1).setValue(reg);
                                             db1.child(s.getUserid()).child("wallet").setValue(s.getWallet()-e.getPrice());
                                             db2 = FirebaseDatabase.getInstance().getReference("Events");

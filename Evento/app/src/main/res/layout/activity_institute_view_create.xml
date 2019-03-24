@@ -93,24 +93,46 @@
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
             android:text="Price:" />
+        <TextView
+            android:id="@+id/tv_sed_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="24dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:text="" />
+        <TextView
+            android:id="@+id/tv_sed_updates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="24dp"
+            android:layout_marginTop="3dp"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            android:text="" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Edit Event" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Event Updates" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Show Student List" />
     </LinearLayout>
 
 </ScrollView>
