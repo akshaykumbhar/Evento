@@ -71,7 +71,7 @@ public class Login extends AppCompatActivity {
 
                            final FirebaseUser user  =  Auth.getCurrentUser();
                             DatabaseReference dbf = FirebaseDatabase.getInstance().getReference("Student");
-                            dbf.addValueEventListener(new ValueEventListener() {
+                            dbf.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     for ( DataSnapshot ds : dataSnapshot.getChildren())
@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
                                 }
                             });
                             dbf = FirebaseDatabase.getInstance().getReference("Institute");
-                            dbf.addValueEventListener(new ValueEventListener() {
+                            dbf.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     for ( DataSnapshot ds : dataSnapshot.getChildren())
