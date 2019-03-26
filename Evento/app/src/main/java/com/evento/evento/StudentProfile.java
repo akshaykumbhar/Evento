@@ -91,7 +91,7 @@ public class StudentProfile extends Fragment {
         if (user != null)
         {
             dbf = FirebaseDatabase.getInstance().getReference("Student");
-            dbf.addValueEventListener(new ValueEventListener() {
+            dbf.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren())

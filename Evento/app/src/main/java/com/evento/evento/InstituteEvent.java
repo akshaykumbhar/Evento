@@ -59,7 +59,7 @@ public class InstituteEvent extends Fragment{
         lv = (ListView) view.findViewById(R.id.lv_ennt);
         user = Auth.getCurrentUser();
         db = FirebaseDatabase.getInstance().getReference("Events");
-        db.addValueEventListener(new ValueEventListener() {
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(Event != null && ids!=null)

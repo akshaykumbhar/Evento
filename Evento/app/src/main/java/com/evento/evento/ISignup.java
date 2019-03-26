@@ -162,6 +162,8 @@ public class ISignup extends AppCompatActivity {
                                 flag = false;
                                 String userid = String.valueOf(a);
                                 String prouri = "InstitueProfile/" + userid + ".jpg";
+                                btnsignup.setClickable(false);
+
 
                                 final Institute user = new Institute(name, Email, Address, Phone, userid, prouri,0);
                                 final StorageReference sf = mStorageRef.child(user.getProuri());
@@ -184,6 +186,7 @@ public class ISignup extends AppCompatActivity {
                                                     else
                                                     {
                                                         prog.cancel();
+                                                        btnsignup.setClickable(true);
                                                         Toast.makeText(ISignup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
                                                         return;
                                                     }
@@ -192,6 +195,7 @@ public class ISignup extends AppCompatActivity {
                                         }
                                         else
                                         {
+                                            btnsignup.setClickable(true);
                                             prog.cancel();
                                             Toast.makeText(ISignup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
                                             return;

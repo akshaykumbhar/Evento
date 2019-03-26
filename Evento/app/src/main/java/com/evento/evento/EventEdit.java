@@ -194,6 +194,14 @@ public class EventEdit extends AppCompatActivity {
                     RoundedBitmapDrawable rbd= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
                     rbd.setCircular(true);
                     ivprofile.setImageDrawable(rbd);
+                    File f = new File(getExternalCacheDir(),"user.jpeg");
+                    try {
+                        FileOutputStream fos = new FileOutputStream(f);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG,50,fos);
+                        filepath = Uri.fromFile(f);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -208,7 +216,7 @@ public class EventEdit extends AppCompatActivity {
             File f = new File(getExternalCacheDir(),"user.jpeg");
             try {
                 FileOutputStream fos = new FileOutputStream(f);
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG,50,fos);
                 filepath = Uri.fromFile(f);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

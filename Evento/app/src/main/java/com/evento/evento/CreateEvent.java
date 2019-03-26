@@ -149,6 +149,8 @@ public class CreateEvent extends AppCompatActivity {
                 prog.setTitle("Creating Event");
                 prog.setMessage("Please wait");
                 prog.show();
+                btncreate.setText("Creating");
+                btncreate.setClickable(false);
 
                 String s[] = sd.split("/");
                 final String id = s[2]+s[1]+s[0]+String.valueOf((int)(Math.random()*100)+10);
@@ -205,6 +207,15 @@ public class CreateEvent extends AppCompatActivity {
                     RoundedBitmapDrawable rbd= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
                     rbd.setCircular(true);
                     ivprofile.setImageDrawable(rbd);
+                    File f = new File(getExternalCacheDir(),"user.jpeg");
+                    try {
+                        FileOutputStream fos = new FileOutputStream(f);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG,50,fos);
+                        filepath = Uri.fromFile(f);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -219,7 +230,7 @@ public class CreateEvent extends AppCompatActivity {
             File f = new File(getExternalCacheDir(),"user.jpeg");
             try {
                 FileOutputStream fos = new FileOutputStream(f);
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG,50,fos);
                 filepath = Uri.fromFile(f);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

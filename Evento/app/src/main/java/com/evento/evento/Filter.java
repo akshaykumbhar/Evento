@@ -1,6 +1,7 @@
 package com.evento.evento;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class Filter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         c1 = (CheckBox) findViewById(R.id.checkBox);
         c2 = (CheckBox) findViewById(R.id.checkBox2);
         c3 = (CheckBox) findViewById(R.id.checkBox3);

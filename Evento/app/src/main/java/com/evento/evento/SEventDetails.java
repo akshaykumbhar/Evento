@@ -1,6 +1,7 @@
 package com.evento.evento;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Region;
 import android.net.Uri;
@@ -50,6 +51,7 @@ public class SEventDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sevent_details);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         tvname = (TextView) findViewById(R.id.tv_sed_name);
         tvsub = (TextView) findViewById(R.id.tv_sed_sub);
         tvseat = (TextView) findViewById(R.id.tv_sed_seat);
@@ -171,7 +173,7 @@ public class SEventDetails extends AppCompatActivity {
                                                         {
                                                             db3.child(is.getUserid()).child("wallet").setValue(is.getWallet() + e.getPrice());
                                                             Toast.makeText(SEventDetails.this, "Event Booked", Toast.LENGTH_SHORT).show();
-                                                            return;
+                                                            btnbook.setText("Booking Done");
                                                         }
                                                     }
                                                 }

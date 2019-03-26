@@ -62,6 +62,7 @@ public class Login extends AppCompatActivity {
                 prog.setTitle("Login");
                 prog.setMessage("Please wait");
                 prog.show();
+                btnlogin.setClickable(false);
                 Auth.signInWithEmailAndPassword(etEmail.getText().toString(),etPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -115,6 +116,7 @@ public class Login extends AppCompatActivity {
                         else
                         {
                             prog.cancel();
+                            btnlogin.setClickable(true);
                             Toast.makeText(Login.this, "Invalid Email or Password", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -133,7 +135,9 @@ public class Login extends AppCompatActivity {
                     etEmail.requestFocus();
                     return;
                 }
+                tvforget.setText("Resend Reset Link");
                 Auth.sendPasswordResetEmail(em);
+                Toast.makeText(Login.this, "Resest Password Email as been send to you", Toast.LENGTH_SHORT).show();
             }
         });
         

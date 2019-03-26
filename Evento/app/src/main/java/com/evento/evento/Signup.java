@@ -141,6 +141,7 @@ public class Signup extends AppCompatActivity {
                 prog.setTitle("Sign-up");
                 prog.setMessage("Please wait");
                 prog.show();
+
                 df = FirebaseDatabase.getInstance().getReference("Student");
                 df.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -177,7 +178,7 @@ public class Signup extends AppCompatActivity {
                                 flag = false;
                                 String userid = String.valueOf(a);
                                 String prouri = "StudentProfile/"+userid+".jpg";
-
+                                btnsignup.setClickable(false);
                                 final Student user = new Student(name,Email,College,Phone,userid,prouri,0);
                                 final StorageReference sf = mStorageRef.child(user.getProuri());
                                 sf.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -200,7 +201,9 @@ public class Signup extends AppCompatActivity {
                                                     {
                                                         prog.cancel();
                                                         Toast.makeText(Signup.this, "Sign-up Failed", Toast.LENGTH_SHORT).show();
+                                                        btnsignup.setClickable(true);
                                                         return;
+
                                                     }
                                                 }
                                             });
@@ -209,7 +212,9 @@ public class Signup extends AppCompatActivity {
                                         {
                                             prog.cancel();
                                             Toast.makeText(Signup.this, "Image failed to upload", Toast.LENGTH_SHORT).show();
+                                            btnsignup.setClickable(true);
                                             return;
+
                                         }
                                     }
                                 });
@@ -250,6 +255,14 @@ public class Signup extends AppCompatActivity {
                     RoundedBitmapDrawable rbd= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
                     rbd.setCircular(true);
                     ivprofile.setImageDrawable(rbd);
+                    File f = new File(getExternalCacheDir(),"user.jpeg");
+                    try {
+                        FileOutputStream fos = new FileOutputStream(f);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG,50,fos);
+                        filepath = Uri.fromFile(f);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -264,7 +277,7 @@ public class Signup extends AppCompatActivity {
             File f = new File(getExternalCacheDir(),"user.jpeg");
             try {
                 FileOutputStream fos = new FileOutputStream(f);
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG,50,fos);
                 filepath = Uri.fromFile(f);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

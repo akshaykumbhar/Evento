@@ -37,7 +37,6 @@ public class ChoiceSign extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(ChoiceSign.this,Login.class));
         finish();
     }
 }

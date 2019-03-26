@@ -1,6 +1,7 @@
 package com.evento.evento;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -38,6 +39,7 @@ public class StudentEventView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_event_view);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         tvname = (TextView) findViewById(R.id.tv_sed_name);
         tvsub = (TextView) findViewById(R.id.tv_sed_sub);
         tvsd = (TextView) findViewById(R.id.tv_sed_sd);
@@ -49,7 +51,7 @@ public class StudentEventView extends AppCompatActivity {
         Intent i = getIntent();
         final String id = i.getStringExtra("id");
         db = FirebaseDatabase.getInstance().getReference("Events");
-        db.addValueEventListener(new ValueEventListener() {
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())

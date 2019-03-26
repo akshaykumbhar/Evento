@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         user = Auth.getCurrentUser();
         if (user != null) {
             db = FirebaseDatabase.getInstance().getReference("Student");
-            db.addValueEventListener(new ValueEventListener() {
+            db.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                                         finish();
                                     }
                                 }, 5000);
+                                break;
                             }
                         }
                     }
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             db = FirebaseDatabase.getInstance().getReference("Institute");
-            db.addValueEventListener(new ValueEventListener() {
+            db.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds : dataSnapshot.getChildren())
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                                         finish();
                                     }
                                 }, 5000);
+                                break;
                             }
                         }
                     }

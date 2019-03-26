@@ -94,7 +94,7 @@ public class InstituteProfile extends Fragment {
             }
         });
         dbr = FirebaseDatabase.getInstance().getReference("Institute");
-        dbr.addValueEventListener(new ValueEventListener() {
+        dbr.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())

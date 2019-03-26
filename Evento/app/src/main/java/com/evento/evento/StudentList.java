@@ -34,7 +34,7 @@ public class StudentList extends AppCompatActivity {
         Intent i = getIntent();
         final String id = i.getStringExtra("id");
         db = FirebaseDatabase.getInstance().getReference("Register");
-        db.addValueEventListener(new ValueEventListener() {
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 name = new ArrayList<String>();
