@@ -105,7 +105,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
-                    app:srcCompat="@drawable/wallet2" />
+                    app:srcCompat="@drawable/logout" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
