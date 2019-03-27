@@ -24,7 +24,7 @@
         android:id="@+id/ivpro"
         android:layout_width="match_parent"
         android:layout_height="160sp"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal"
+        app:srcCompat="@drawable/shedule"
         android:layout_weight="0.30"
         />
     <LinearLayout

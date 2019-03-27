@@ -1,63 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.evento.evento.MainActivity"
     android:background="@drawable/background_color"
-
+    android:layout_centerVertical="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1"
     >
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher_logo"
+        android:layout_weight="0.20" />
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/splashText"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Evento"
+        android:textColor="#2a4d69"
+        android:textSize="40dp"
+        android:layout_weight="0.10"/>
 
-        <ImageView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:src="@mipmap/ic_launcher_logo"
-            android:layout_gravity="center">
-
-         </ImageView>
-
-        <ImageView
-            android:id="@+id/splashImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:gravity="center_horizontal"
-            android:scaleType="fitCenter">
-        </ImageView>
-
-        <TextView
-            android:id="@+id/splashText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:text="@string/title"
-            android:textColor="#2a4d69"
-            android:textFontWeight="70dp"
-            android:textSize="80dp" />
-        <TextView
-            android:id="@+id/splashText2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:text="@string/title2"
-            android:textColor="#ffffff"
-
-            android:textSize="30dp" />
-    </LinearLayout>
-
-
-
-
-</RelativeLayout>
+</LinearLayout>

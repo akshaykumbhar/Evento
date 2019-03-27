@@ -4,178 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.evento.evento.Signup"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="20dp"
-    android:background="@drawable/background_color">
+    android:padding="20sp"
+    android:background="@drawable/background_color"
+    android:weightSum="1">
 
-
-    <RelativeLayout
-        android:id="@+id/rel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp">
-        <RelativeLayout
-            android:id="@+id/imguser"
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/circle_border"
-            android:layout_centerHorizontal="true">
-
-            <ImageView
-                android:id="@+id/im"
-                android:contentDescription="@string/app_name"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/circle"
-                android:scaleType="centerInside"
-                android:padding="5dp"
-                android:layout_margin="9dp">
-
-            </ImageView>
-        </RelativeLayout>
-    </RelativeLayout>
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@+id/rel"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+        android:layout_height="89sp"
+        android:orientation="vertical"
+        android:layout_weight="0.45"
+        android:weightSum="1">
+        <ImageView
+            android:id="@+id/ivProfile_signup"
+            android:layout_width="150sp"
             android:layout_gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            >
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="GALLERY"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp"/>
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_height="wrap_content"
+            android:layout_height="100sp"
+            android:layout_weight="0.98"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            >
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CAMERA"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp"/>
-            </LinearLayout>
-        </RelativeLayout>
+            android:orientation="horizontal"
+            android:layout_height="33sp"
+            android:weightSum="1">
 
+            <TextView
+                android:id="@+id/tvgallery_Signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GALLERY"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="0.50" />
+            <TextView
+                android:id="@+id/tvtakephoto_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TAKE PHOTO"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_weight="0.50"/>
+        </LinearLayout>
     </LinearLayout>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/shapeemail"
-        android:drawablePadding="10dp"
-        android:hint="Name"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/shapeemail"
-        android:drawablePadding="10dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
-    <Spinner
-        android:id="@+id/spCollege_Signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8sp"
-        android:padding="12sp"
-        android:drawablePadding="10sp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/shapeemail"
-        android:drawablePadding="10dp"
-        android:hint="Contact number"
-        android:inputType="phone"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/shapeemail"
-        android:drawablePadding="10dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_weight="0.6"
+        android:weightSum="1"
+        >
 
-        <CheckBox
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etName_signup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remember Me"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="0dp"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Name"
+            android:inputType="text"
             android:textColor="@color/white"
-            android:buttonTint="@color/white"
-            android:checked="true"/>
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white" />
+
+
+
+        <EditText
+            android:id="@+id/etEmail_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white" />
+
+        <EditText
+            android:id="@+id/etPassword_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white" />
+
+
+        <Spinner
+            android:id="@+id/spCollege_Signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:drawablePadding="10sp"/>
+
+        <EditText
+            android:id="@+id/etPhone_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:padding="12sp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10sp"
+            android:hint="Contact number"
+            android:inputType="phone"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorHighlight="@color/white" />
+
+        <Button
+            android:id="@+id/btnSignup_Signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Signup"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginBottom="3sp"
+            android:layout_marginTop="0sp"
+            android:background="@drawable/shapesignup"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:shadowColor="@android:color/transparent"
-        android:padding="15dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/shapesignup"
-        android:textColor="@color/white"
-        android:id="@+id/splashText2"/>
+
 </LinearLayout>
