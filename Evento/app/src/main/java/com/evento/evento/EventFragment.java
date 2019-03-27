@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,7 @@ public class EventFragment extends Fragment {
 
 
     StorageReference sf;
-    Button btnfilter,btnsort;
+    FloatingActionButton btnfilter,btnsort;
     DatabaseReference dbf;
     static FirebaseAuth Auth;
   static  FirebaseUser user;
@@ -80,12 +81,12 @@ public class EventFragment extends Fragment {
         cont= getContext();
         act = getActivity();
         res = getResources();
-        btnfilter = (Button) view.findViewById(R.id.button2);
+        btnfilter = (FloatingActionButton) view.findViewById(R.id.button2);
       //  btnsort = (Button) view.findViewById(R.id.button3);
         lv = (ListView) view.findViewById(R.id.listView);
         sf = FirebaseStorage.getInstance().getReference();
         dbf = FirebaseDatabase.getInstance().getReference("Events");
-        dbf.addValueEventListener(new ValueEventListener() {
+        dbf.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Org = new ArrayList<String>();

@@ -63,36 +63,45 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_margin="10dp"
                 >
             <ImageButton
                 android:id="@+id/iv_imageButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#ffffff"
                 android:layout_margin="5dp"
                 app:srcCompat="@drawable/person" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Edit Profile"
+                    android:textColor="#000"
                     android:textAlignment="center"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="50"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+
+                android:layout_margin="10dp">
             <ImageButton
                 android:id="@+id/imageButton1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#ffffff"
                 android:layout_margin="5dp"
                 app:srcCompat="@drawable/logout" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Edit Profile"
+                    android:textColor="#000"
                     android:textAlignment="center"/>
                 </LinearLayout>
         </LinearLayout>
@@ -106,28 +115,34 @@
                 android:layout_weight="50"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_margin="10dp">
 
             <ImageButton
                 android:id="@+id/iv_imageButton2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:srcCompat="@drawable/logout" />
+                android:background="#ffffff"
+                app:srcCompat="@drawable/wallet4" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Wallet"
+                    android:textColor="#000"
                     android:textAlignment="center"/>
                 </LinearLayout>
             <LinearLayout
                 android:layout_weight="50"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_margin="10dp">
             <ImageButton
                 android:id="@+id/iv_imageButton3"
+                android:background="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -137,6 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Logout"
+                    android:textColor="#000"
                     android:textAlignment="center"/>
                 </LinearLayout>
         </LinearLayout>

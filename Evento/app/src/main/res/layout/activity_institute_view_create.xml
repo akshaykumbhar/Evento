@@ -120,19 +120,40 @@
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Event" />
+            android:text="EDIT EVENT"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/shapelogin" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Event Updates" />
+            android:text="EVENT UPDATE"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/shapelogin" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Student List" />
+            android:text="SHOW STUDNET LIST"
+            android:shadowColor="@android:color/transparent"
+            android:padding="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/shapelogin" />
     </LinearLayout>
 
 </ScrollView>

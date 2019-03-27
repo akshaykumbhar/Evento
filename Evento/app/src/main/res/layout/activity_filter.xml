@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_color"
     tools:context="com.evento.evento.Filter">
 
     <TextView
@@ -54,5 +55,12 @@
         android:id="@+id/button7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Apply" />
+        android:text="APPLY"
+        android:shadowColor="@android:color/transparent"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/shapelogin"/>
 </LinearLayout>

@@ -41,7 +41,7 @@ import java.io.IOException;
 public class ISignup extends AppCompatActivity {
 
     Button btnsignup;
-    TextView tvgallery,tvtakephoto;
+    Button tvgallery,tvtakephoto;
     EditText etName,etEmail,etPassword,etPhone,etAddress;
     ImageView ivprofile;
     Uri filepath;
@@ -57,8 +57,8 @@ public class ISignup extends AppCompatActivity {
         setContentView(R.layout.activity_isignup);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btnsignup = (Button) findViewById(R.id.btnSignup_ISignup);
-        tvgallery = (TextView)findViewById(R.id.tvgallery_ISignup);
-        tvtakephoto = (TextView) findViewById(R.id.tvtakephoto_Isignup);
+        tvgallery = (Button) findViewById(R.id.tvgallery_ISignup);
+        tvtakephoto = (Button) findViewById(R.id.tvtakephoto_Isignup);
         etName  = (EditText) findViewById(R.id.etName_Isignup);
         etEmail = (EditText) findViewById(R.id.etEmail_Isignup);
         etPassword = (EditText) findViewById(R.id.etPassword_Isignup);
