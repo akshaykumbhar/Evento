@@ -60,6 +60,15 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     android:layout_margin="10sp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Time:" />
+
+    <TextView
         android:id="@+id/tv_updates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

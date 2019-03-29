@@ -39,7 +39,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CreateEvent extends AppCompatActivity {
-    EditText etname,etsub,etseat,etstartdate,etenddate,etaddress,etprice;
+    EditText etname,etsub,etseat,etstartdate,etenddate,etaddress,etprice,ettim;
     Spinner spcategory;
     Button btncreate,btngallery,btntakephoto;
     ImageView ivprofile;
@@ -62,6 +62,7 @@ public class CreateEvent extends AppCompatActivity {
         etstartdate = (EditText) findViewById(R.id.et_ce_sd);
         etenddate = (EditText) findViewById(R.id.et_ce_ed);
         etaddress = (EditText) findViewById(R.id.et_ce_address);
+        ettim = (EditText) findViewById(R.id.et_ce_time);
         etprice = (EditText) findViewById(R.id.et_cs_price);
         spcategory = (Spinner) findViewById(R.id.sp_ce_category);
         btncreate = (Button) findViewById(R.id.btn_ce_create);
@@ -81,6 +82,8 @@ public class CreateEvent extends AppCompatActivity {
         CollegeName.add("C++");
         CollegeName.add("Web Framework");
         CollegeName.add("User Interface");
+        CollegeName.add("Culture Events");
+        CollegeName.add("Sport Events");
         ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,CollegeName);
         spcategory.setAdapter(adapter);
         btncreate.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +149,13 @@ public class CreateEvent extends AppCompatActivity {
                     etprice.requestFocus();
                     return;
                 }
+                final String time = ettim.getText().toString();
+                if(time.isEmpty())
+                {
+                    ettim.setError("Enter Time");
+                    ettim.requestFocus();
+                    return;
+                }
                 prog.setTitle("Creating Event");
                 prog.setMessage("Please wait");
                 prog.show();
@@ -161,7 +171,7 @@ public class CreateEvent extends AppCompatActivity {
                 s1.putFile(filepath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        Events e = new Events(id,name,sub,prourl,user.getEmail(),Integer.parseInt(seat),Integer.parseInt(seat),sd,ed,add,Integer.parseInt(price),category,"");
+                        Events e = new Events(id,name,sub,prourl,user.getEmail(),Integer.parseInt(seat),Integer.parseInt(seat),sd,ed,add,Integer.parseInt(price),category,"",time);
                         db.child(id).setValue(e);
                         Toast.makeText(CreateEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                         prog.cancel();

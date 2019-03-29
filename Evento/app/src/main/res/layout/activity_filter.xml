@@ -51,6 +51,18 @@
         android:text="User Interface" />
 
 
+    <CheckBox
+        android:id="@+id/checkBox10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Culture Events" />
+
+    <CheckBox
+        android:id="@+id/checkBox11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sport Events" />
+
     <Button
         android:id="@+id/button7"
         android:layout_width="match_parent"

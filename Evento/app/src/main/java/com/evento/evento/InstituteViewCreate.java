@@ -29,7 +29,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class InstituteViewCreate extends AppCompatActivity {
-    TextView tvname,tvsub,tvseat,tvavail,tvsd,tved,tvprice,tvup,tvupdate;
+    TextView tvname,tvsub,tvseat,tvavail,tvsd,tved,tvprice,tvup,tvupdate,tvtime;
     ImageView ivimg;
     DatabaseReference db;
     Events e ;
@@ -45,6 +45,7 @@ public class InstituteViewCreate extends AppCompatActivity {
         Intent i = getIntent();
         final String eid = i.getStringExtra("id");
         tvname = (TextView) findViewById(R.id.tv_sed_name);
+        tvtime = (TextView) findViewById(R.id.textView4);
         tvsub = (TextView) findViewById(R.id.tv_sed_sub);
         tvseat = (TextView) findViewById(R.id.tv_sed_seat);
         tvavail = (TextView) findViewById(R.id.tv_sed_aseat);
@@ -70,6 +71,7 @@ public class InstituteViewCreate extends AppCompatActivity {
                         tvavail.setText("Available Seats: "+String.valueOf(e.getAvail()));
                         tvsd.setText("Start Date: "+e.getStartdate());
                         tved.setText("End Date: "+e.getEnddate());
+                        tvtime.setText("Time: "+e.getTime());
                         tvprice.setText("Price: RS. "+String.valueOf(e.getPrice()));
                         if(!e.getUpdate().equals(""))
                         {

@@ -123,6 +123,15 @@
             android:textColorHighlight="@color/white"
             android:inputType="date" />
 
+
+        <EditText
+            android:id="@+id/et_ce_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="time" />
+
         <EditText
             android:id="@+id/et_ce_address"
             android:layout_width="match_parent"

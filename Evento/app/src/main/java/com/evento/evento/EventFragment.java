@@ -213,13 +213,15 @@ public class EventFragment extends Fragment {
             imag1 = new ArrayList<String>();
             price1 = new ArrayList<Integer>();
             seat1 = new ArrayList<Integer>();
-            final Boolean c1,c2,c3,c4,c5,c6;
+            final Boolean c1,c2,c3,c4,c5,c6,c10,c11;
             c1 = data.getBooleanExtra("Android",false);
             c2 = data.getBooleanExtra("Java",false);
             c3 = data.getBooleanExtra("Python",false);
             c4 = data.getBooleanExtra("C++",false);
             c5 = data.getBooleanExtra("Web Framework",false);
             c6 = data.getBooleanExtra("User Interface",false);
+            c10 = data.getBooleanExtra("Culture Events",false);
+            c11 = data.getBooleanExtra("Sport Events",false);
 
            dbf.addListenerForSingleValueEvent(new ValueEventListener() {
                @Override
@@ -241,7 +243,7 @@ public class EventFragment extends Fragment {
                    price = new ArrayList<Integer>();
                    seat = new ArrayList<Integer>();
 
-                   if(c1 || c2 || c3 || c4 || c5 || c6 )
+                   if(c1 || c2 || c3 || c4 || c5 || c6 || c10 || c11)
                    {
 
                        for(int i = 0 ; i < Event1.size(); i++)
@@ -288,6 +290,22 @@ public class EventFragment extends Fragment {
                                seat.add(seat1.get(i));
                            }
                            if(c6 && cate.get(i).equals("User Interface")) {
+                               Event.add(Event1.get(i));
+                               Org.add(org1.get(i));
+                               id.add(id1.get(i));
+                               imag.add(imag1.get(i));
+                               price.add(price1.get(i));
+                               seat.add(seat1.get(i));
+                           }
+                           if(c10 && cate.get(i).equals("Culture Events")) {
+                               Event.add(Event1.get(i));
+                               Org.add(org1.get(i));
+                               id.add(id1.get(i));
+                               imag.add(imag1.get(i));
+                               price.add(price1.get(i));
+                               seat.add(seat1.get(i));
+                           }
+                           if(c11 && cate.get(i).equals("Sport Events")) {
                                Event.add(Event1.get(i));
                                Org.add(org1.get(i));
                                id.add(id1.get(i));

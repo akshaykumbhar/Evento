@@ -36,7 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SEventDetails extends AppCompatActivity {
-    TextView tvname,tvsub,tvseat,tvavail,tvsd,tved,tvprice;
+    TextView tvname,tvsub,tvseat,tvavail,tvsd,tved,tvprice,tvtime;
     ImageView ivimg;
     FirebaseAuth Auth;
     FirebaseUser user ;
@@ -56,6 +56,7 @@ public class SEventDetails extends AppCompatActivity {
         tvsub = (TextView) findViewById(R.id.tv_sed_sub);
         tvseat = (TextView) findViewById(R.id.tv_sed_seat);
         tvavail = (TextView) findViewById(R.id.tv_sed_aseat);
+        tvtime=(TextView)findViewById(R.id.textView2);
         tvsd = (TextView) findViewById(R.id.tv_sed_sd);
         tved = (TextView) findViewById(R.id.tv_sed_ed);
         tvprice = (TextView) findViewById(R.id.tv_sed_price);
@@ -81,6 +82,7 @@ public class SEventDetails extends AppCompatActivity {
                         tvsd.setText("Start Date: "+e.getStartdate());
                         tved.setText("End Date: "+e.getEnddate());
                         tvprice.setText("Price: RS. "+String.valueOf(e.getPrice()));
+                        tvtime.setText("Time: "+e.getTime());
                         StorageReference ref = sf.child(e.getImgurl().toString());
                         try {
                             final File localFile = File.createTempFile("images", "jpg");

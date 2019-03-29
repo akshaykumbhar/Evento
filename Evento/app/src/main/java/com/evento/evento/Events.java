@@ -18,13 +18,14 @@ public class Events {
     int price;
     String category;
     String update;
+    String time;
 
 
 
     public Events() {
     }
 
-    public Events(String id,String name, String sub, String imgurl, String email, int seat, int avail, String startdate, String enddate, String address, int price, String category,String update) {
+    public Events(String id,String name, String sub, String imgurl, String email, int seat, int avail, String startdate, String enddate, String address, int price, String category,String update,String time) {
         this.id = id;
         this.name = name;
         this.sub = sub;
@@ -39,6 +40,15 @@ public class Events {
         this.price = price;
         this.category = category;
         this.update = update;
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getUpdate() {

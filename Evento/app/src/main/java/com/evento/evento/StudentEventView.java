@@ -28,7 +28,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class StudentEventView extends AppCompatActivity {
-    TextView tvname,tvsub,tvup,tvupdate,tvsd,tved;
+    TextView tvname,tvsub,tvup,tvupdate,tvsd,tved,tvtime;
     ImageView ivimg;
     FirebaseAuth Auth;
     FirebaseUser user ;
@@ -46,6 +46,7 @@ public class StudentEventView extends AppCompatActivity {
         tved = (TextView) findViewById(R.id.tv_sed_ed);
         ivimg = (ImageView) findViewById(R.id.iv_sed_img);
         tvup = (TextView) findViewById(R.id.tv_updates);
+        tvtime = (TextView)findViewById(R.id.textView3);
         tvupdate = (TextView) findViewById(R.id.tv_update);
         sf = FirebaseStorage.getInstance().getReference();
         Intent i = getIntent();
@@ -62,6 +63,7 @@ public class StudentEventView extends AppCompatActivity {
                         tvname.setText(e.getName());
                         tvsd.setText("Start Date: "+e.getStartdate());
                         tved.setText("End Date: "+e.getEnddate());
+                        tvtime.setText("Time: "+e.getTime());
                         tvsub.setText(e.getSub());
                         if(!e.getUpdate().equals(""))
                         {

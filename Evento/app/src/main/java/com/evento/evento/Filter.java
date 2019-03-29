@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 public class Filter extends AppCompatActivity {
-    CheckBox c1,c2,c3,c4,c5,c6;
+    CheckBox c1,c2,c3,c4,c5,c6,c10,c11;
     Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ public class Filter extends AppCompatActivity {
         c4 = (CheckBox) findViewById(R.id.checkBox4);
         c5 = (CheckBox) findViewById(R.id.checkBox5);
         c6 = (CheckBox) findViewById(R.id.checkBox6);
+        c10 = (CheckBox) findViewById(R.id.checkBox10);
+        c11 = (CheckBox) findViewById(R.id.checkBox11);
         btn =(Button) findViewById(R.id.button7);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +35,8 @@ public class Filter extends AppCompatActivity {
                 intent.putExtra("C++",c4.isChecked());
                 intent.putExtra("Web Framework",c5.isChecked());
                 intent.putExtra("User Interface",c6.isChecked());
+                intent.putExtra("Culture Events",c10.isChecked());
+                intent.putExtra("Sport Events",c11.isChecked());
                 setResult(RESULT_OK,intent);
                 finish();
 
@@ -50,6 +54,8 @@ public class Filter extends AppCompatActivity {
         intent.putExtra("C++",false);
         intent.putExtra("Web Framework",false);
         intent.putExtra("User Interface",false);
+        intent.putExtra("Culture Events",false);
+        intent.putExtra("Sport Events",false);
         setResult(RESULT_OK,intent);
         finish();
 
