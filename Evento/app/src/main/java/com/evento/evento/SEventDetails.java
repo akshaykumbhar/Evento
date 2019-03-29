@@ -81,7 +81,7 @@ public class SEventDetails extends AppCompatActivity {
                         tvavail.setText("Available Seats: "+String.valueOf(e.getAvail()));
                         tvsd.setText("Start Date: "+e.getStartdate());
                         tved.setText("End Date: "+e.getEnddate());
-                        tvprice.setText("Price: RS. "+String.valueOf(e.getPrice()));
+                        tvprice.setText("Price: \u20B9 "+String.valueOf(e.getPrice()));
                         tvtime.setText("Time: "+e.getTime());
                         StorageReference ref = sf.child(e.getImgurl().toString());
                         try {

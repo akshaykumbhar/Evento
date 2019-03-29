@@ -5,23 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_color"
     tools:context="com.evento.evento.EventUpdate"
     android:weightSum="1">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:gravity="center"
-        android:text="Updates" />
+        android:text="Updates"
+        android:layout_margin="5dp"
+        android:textColor="#000"/>
 
     <EditText
         android:id="@+id/et_eu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:layout_margin="8sp"
+        android:padding="12sp"
+        android:background="@drawable/shapeemail"
+        android:drawablePadding="10sp"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorHighlight="@color/white"/>
 
     <Button
         android:id="@+id/btn_eu"

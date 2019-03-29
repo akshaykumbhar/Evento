@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_color"
     tools:context="com.evento.evento.StudentList">
 
     <TextView
         android:id="@+id/tv_sl_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="15dp"
         android:text="Student Count:" />
 
     <ListView

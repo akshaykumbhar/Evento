@@ -37,7 +37,7 @@ public class InstituteWallet extends AppCompatActivity {
                     i = ds.getValue(Institute.class);
                     if(i.getEmail().equals(user.getEmail()))
                     {
-                        tvwallet.setText("Rs. "+String.valueOf(i.getWallet()));
+                        tvwallet.setText("\u20B9 "+String.valueOf(i.getWallet()));
                     }
                 }
             }

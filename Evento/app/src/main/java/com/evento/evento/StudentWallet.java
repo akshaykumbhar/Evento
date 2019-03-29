@@ -43,7 +43,7 @@ public class StudentWallet extends AppCompatActivity {
                     s = ds.getValue(Student.class);
                     if(s.getEmail().equals(user.getEmail()))
                     {
-                        tv_price.setText("Rs. "+String.valueOf(s.getWallet()));
+                        tv_price.setText("\u20B9 "+String.valueOf(s.getWallet()));
                         break;
                     }
                 }

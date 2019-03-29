@@ -63,7 +63,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
+                android:padding="5dp"
+                android:background="@drawable/layout_bg"
                 android:layout_margin="10dp"
                 >
             <ImageButton
@@ -71,14 +72,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+
                 android:background="#ffffff"
                 android:layout_margin="5dp"
-                app:srcCompat="@drawable/person" />
+                app:srcCompat="@drawable/ic_curriculum" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Edit Profile"
                     android:textColor="#000"
+                    android:layout_marginBottom="4dp"
                     android:textAlignment="center"/>
             </LinearLayout>
             <LinearLayout
@@ -86,8 +89,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
-
+                android:background="@drawable/layout_bg"
+                android:padding="5dp"
                 android:layout_margin="10dp">
             <ImageButton
                 android:id="@+id/imageButton1"
@@ -96,12 +99,13 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:layout_margin="5dp"
-                app:srcCompat="@drawable/logout" />
+                app:srcCompat="@drawable/ic_nut_icon" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Edit Profile"
+                    android:text="Settings"
                     android:textColor="#000"
+                    android:layout_marginBottom="4dp"
                     android:textAlignment="center"/>
                 </LinearLayout>
         </LinearLayout>
@@ -116,21 +120,24 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="@drawable/layout_bg">
 
             <ImageButton
                 android:id="@+id/iv_imageButton2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#ffffff"
-                app:srcCompat="@drawable/wallet4" />
+                android:layout_weight="0.66"
+                android:background="@drawable/lg_ww"
+                app:srcCompat="@drawable/ic_wallet" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Wallet"
                     android:textColor="#000"
+                    android:layout_marginBottom="4dp"
+
                     android:textAlignment="center"/>
                 </LinearLayout>
             <LinearLayout
@@ -138,21 +145,23 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="@drawable/layout_bg">
             <ImageButton
                 android:id="@+id/iv_imageButton3"
                 android:background="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.66"
                 android:layout_margin="5dp"
-                app:srcCompat="@drawable/logout" />
+                app:srcCompat="@drawable/ic_exit" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Logout"
                     android:textColor="#000"
+                    android:layout_marginBottom="4dp"
                     android:textAlignment="center"/>
                 </LinearLayout>
         </LinearLayout>
