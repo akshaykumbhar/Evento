@@ -38,6 +38,10 @@
         <activity android:name=".StudentList" />
         <activity android:name=".EventUpdate" />
         <activity android:name=".EventEdit"></activity>
+        <receiver
+            android:name=".SetReminder"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
