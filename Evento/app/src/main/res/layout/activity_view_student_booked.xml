@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_color"
     tools:context="com.evento.evento.ViewStudentBooked">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="#000"
+        android:text="\n \n BE Project \n \n \n EVENTO \n College Event App\n \n \n Developed By\n \n Akshay Kumbhar \n Gaurang Bhagwat \n Asmita Karale\n Hiral Mav" />
+</LinearLayout>

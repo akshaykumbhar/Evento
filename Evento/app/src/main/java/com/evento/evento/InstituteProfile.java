@@ -66,6 +66,13 @@ public class InstituteProfile extends Fragment {
         iv_propic = (ImageView) view.findViewById(R.id.iivProfilePic);
         ibwallet=(ImageButton) view.findViewById(R.id.iiv_imageButton2);
         ibedit = (ImageButton) view.findViewById(R.id.iiv_imageButton);
+        ibabout = (ImageButton) view.findViewById(R.id.iimageButton1);
+        ibabout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),IEditProfile.class));
+            }
+        });
         ibedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

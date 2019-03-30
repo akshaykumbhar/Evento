@@ -48,7 +48,7 @@ public class StudentProfile extends Fragment {
     DatabaseReference dbf;
     Boolean flag=true;
     Student s;
-    ImageButton iblogout,ibwallet,ibprofile;
+    ImageButton iblogout,ibwallet,ibprofile,ibsetting;
     public StudentProfile() {
         // Required empty public constructor
     }
@@ -65,9 +65,16 @@ public class StudentProfile extends Fragment {
         iblogout = (ImageButton) view.findViewById(R.id.iv_imageButton3);
         ibwallet = (ImageButton) view.findViewById(R.id.iv_imageButton2);
         ibprofile = (ImageButton) view.findViewById(R.id.iv_imageButton);
+        ibsetting = (ImageButton) view.findViewById(R.id.imageButton1);
         Auth = FirebaseAuth.getInstance();
         user = Auth.getCurrentUser();
         sf = FirebaseStorage.getInstance().getReference();
+        ibsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),IEditProfile.class));
+            }
+        });
         ibprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
